@@ -1,0 +1,2071 @@
+<!doctype html>
+<html lang="uz">
+<head>
+  <meta charset="UTF-8" />
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0, viewport-fit=cover"
+  />
+
+  <title>Javohir & Farangiz - Nikoh To'yi</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+
+  <link
+    href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500&family=Inter:wght@300;400;500&family=Amiri&family=Great+Vibes&family=Playfair+Display:wght@400;700&family=Raleway:wght@100..900&display=swap"
+    rel="stylesheet"
+  />
+
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      height: 100vh;
+      height: 100dvh;
+      font-family: "Inter", sans-serif;
+      overflow: hidden;
+      background: #0b0b0b;
+    }
+
+    /* =========================
+       LOCK SCREEN
+    ========================= */
+
+    .lock-screen {
+      position: fixed;
+      inset: 0;
+      width: 100%;
+      height: 100vh;
+      height: 100dvh;
+      z-index: 1000;
+      background: #0b0b0b;
+      transition: opacity 1s cubic-bezier(0.16, 1, 0.3, 1);
+      opacity: 1;
+      visibility: visible;
+      overflow: hidden;
+    }
+
+    .lock-bg {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      background: url("img1.jpg") center/cover no-repeat;
+      transform: scale(1.05);
+      transition: transform 8s ease-out;
+    }
+
+    .lock-screen:hover .lock-bg {
+      transform: scale(1);
+    }
+
+    .lock-blur {
+      position: absolute;
+      inset: 0;
+      backdrop-filter: blur(6px);
+      background: rgba(0, 0, 0, 0.28);
+    }
+
+    .lock-content {
+      position: relative;
+      z-index: 10;
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      padding: 20px;
+      color: #f2f2f2;
+    }
+
+    .lock-invited {
+      font-family: "Raleway", sans-serif;
+      font-size: 12px;
+      letter-spacing: 0.35em;
+      text-transform: uppercase;
+      color: rgba(255, 255, 255, 0.65);
+      margin-bottom: 30px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 12px;
+    }
+
+    .lock-invited::before,
+    .lock-invited::after {
+      content: "";
+      width: 24px;
+      height: 1px;
+      background: #c9a96e;
+    }
+
+    .lock-names {
+      font-family: "Cormorant Garamond", serif;
+      font-size: 52px;
+      font-weight: 400;
+      color: #f2f2f2;
+      text-shadow: 0 5px 25px rgba(0, 0, 0, 0.5);
+      margin-bottom: 18px;
+    }
+
+    .lock-family {
+      font-family: "Raleway", sans-serif;
+      font-size: 11px;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: rgba(255, 255, 255, 0.65);
+      margin-bottom: 20px;
+    }
+
+    .lock-date {
+      font-family: "Inter", sans-serif;
+      font-size: 14px;
+      letter-spacing: 0.2em;
+      color: #c9a96e;
+      margin-bottom: 12px;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .lock-date::before,
+    .lock-date::after {
+      content: "";
+      width: 30px;
+      height: 1px;
+      background: #c9a96e;
+      opacity: 0.5;
+    }
+
+    .lock-time {
+      font-family: "Cormorant Garamond", serif;
+      font-size: 22px;
+      color: #fff;
+      margin-bottom: 14px;
+    }
+
+    .lock-arabic {
+      font-family: "Amiri", serif;
+      font-size: 24px;
+      direction: rtl;
+      color: #c9a96e;
+      margin-bottom: 5px;
+    }
+
+    .lock-translation {
+      font-size: 14px;
+      font-style: italic;
+      color: rgba(255, 255, 255, 0.75);
+      margin-bottom: 7px;
+    }
+
+    .lock-source {
+      font-size: 12px;
+      color: rgba(255, 255, 255, 0.5);
+      margin-bottom: 12px;
+    }
+
+    .lock-heart {
+      margin-bottom: 14px;
+      animation: lockHeartPulse 2s infinite ease-in-out;
+    }
+
+    @keyframes lockHeartPulse {
+      0%, 100% {
+        opacity: 0.4;
+        transform: scale(1);
+      }
+
+      50% {
+        opacity: 1;
+        transform: scale(1.1);
+      }
+    }
+
+    /* =========================
+       SLIDER
+    ========================= */
+
+    .slider-container {
+      width: 85%;
+      max-width: 340px;
+      margin: 0 auto;
+      position: relative;
+    }
+
+    .slider-track {
+      position: relative;
+      width: 100%;
+      height: 56px;
+      border-radius: 30px;
+      background: rgba(255, 255, 255, 0.08);
+      backdrop-filter: blur(20px);
+      border: 1px solid rgba(255, 255, 255, 0.15);
+      cursor: pointer;
+      touch-action: none;
+      user-select: none;
+    }
+
+    .slider-text {
+      position: absolute;
+      inset: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: "Raleway", sans-serif;
+      font-size: 14px;
+      letter-spacing: 0.15em;
+      color: rgba(255, 255, 255, 0.7);
+      text-transform: uppercase;
+      pointer-events: none;
+      z-index: 1;
+    }
+
+    .slider-arrow {
+      position: absolute;
+      right: 16px;
+      top: 50%;
+      transform: translateY(-50%);
+      font-size: 20px;
+      color: #c9a96e;
+      pointer-events: none;
+      z-index: 1;
+    }
+
+    .slider-thumb {
+      position: absolute;
+      top: 4px;
+      left: 4px;
+      width: 48px;
+      height: 48px;
+      border-radius: 50%;
+      background: linear-gradient(145deg, #f5e6c8, #c9a96e);
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+      cursor: grab;
+      z-index: 2;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      touch-action: none;
+    }
+
+    .slider-thumb:active {
+      cursor: grabbing;
+    }
+
+    .lock-icon-svg {
+      width: 32px;
+      height: 32px;
+      fill: none;
+      stroke: #1a1a1a;
+      stroke-width: 1;
+      stroke-linecap: round;
+    }
+
+    /* =========================
+       MAIN
+    ========================= */
+
+    .main-content {
+      opacity: 0;
+      visibility: hidden;
+      transition:
+        opacity 1.2s cubic-bezier(0.16, 1, 0.3, 1),
+        visibility 0s linear 1.2s;
+
+      height: 100vh;
+      height: 100dvh;
+
+      overflow-y: auto;
+      overflow-x: hidden;
+    }
+
+    .main-content.visible {
+      opacity: 1;
+      visibility: visible;
+      transition:
+        opacity 1.2s cubic-bezier(0.16, 1, 0.3, 1),
+        visibility 0s linear 0s;
+    }
+
+    .main-content::-webkit-scrollbar {
+      display: none;
+    }
+
+    /* =========================
+       HERO
+    ========================= */
+
+    .invitation {
+      position: relative;
+      width: 100%;
+      height: 100vh;
+      height: 100dvh;
+      overflow: hidden;
+    }
+
+    .background {
+      position: absolute;
+      inset: 0;
+      background: url("img1.jpg") top/cover no-repeat;
+      filter: grayscale(100%);
+    }
+
+    .overlay {
+      position: absolute;
+      inset: 0;
+      background:
+        linear-gradient(
+          to bottom,
+          rgba(0, 0, 0, 0.05) 35%,
+          rgba(0, 0, 0, 0.75) 100%
+        );
+    }
+
+    .content {
+      position: absolute;
+      bottom: 55px;
+      width: 100%;
+      text-align: center;
+      color: white;
+      padding: 0 20px;
+      z-index: 2;
+    }
+
+    h1 {
+      font-family: "Cormorant Garamond", serif;
+      font-size: 46px;
+      font-weight: 400;
+      margin-bottom: 5px;
+      color: rgba(255, 255, 255, 0.9);
+    }
+
+    .date {
+      color: rgba(255, 255, 255, 0.85);
+      font-size: 16px;
+      font-family: "Inter", sans-serif;
+      letter-spacing: 0.08em;
+    }
+
+    .venue-small {
+      margin-top: 10px;
+      font-size: 12px;
+      letter-spacing: 0.18em;
+      color: rgba(255, 255, 255, 0.65);
+      text-transform: uppercase;
+    }
+
+    .divider {
+      width: 140px;
+      height: 1px;
+      margin: 15px auto;
+      background: linear-gradient(
+        to right,
+        transparent,
+        #c1a06b,
+        transparent
+      );
+    }
+
+    .arabic {
+      font-family: "Amiri", serif;
+      direction: rtl;
+      font-size: 1.3rem;
+      line-height: 1.8;
+      color: #c1a06b;
+      margin-top: 5px;
+    }
+
+    .translation {
+      font-size: 13px;
+      color: #ccc;
+      line-height: 1.6;
+    }
+
+    .source {
+      font-size: 12px;
+      color: #aaa;
+    }
+
+    .scroll-down-container {
+      position: relative;
+      margin: 18px auto 0;
+      width: 48px;
+      height: 48px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      cursor: pointer;
+    }
+
+    .heart-arrow-icon {
+      width: 32px;
+      height: 32px;
+      fill: none;
+      stroke: #d1bfa5;
+      stroke-width: 1.5;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+      animation: heartPulseAndMove 2s infinite ease-in-out;
+    }
+
+    @keyframes heartPulseAndMove {
+      0%, 100% {
+        transform: translateY(0);
+        opacity: 0.5;
+      }
+
+      50% {
+        transform: translateY(7px);
+        opacity: 1;
+      }
+    }
+
+    /* =========================
+       INVITATION
+    ========================= */
+
+    .invite-section {
+      position: relative;
+      height: 100vh;
+      height: 100dvh;
+      overflow: hidden;
+      background: black;
+    }
+
+    .invite-bg {
+      position: absolute;
+      width: 110%;
+      height: 110%;
+      top: -5%;
+      left: -5%;
+      background: url("img2.jpg") center/cover no-repeat;
+      filter: grayscale(100%) brightness(0.58);
+      transform: scale(1.1);
+      transition: transform 1.5s ease-out;
+    }
+
+    .invite-overlay {
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(
+        circle at center,
+        rgba(0, 0, 0, 0.18) 0%,
+        rgba(0, 0, 0, 0.78) 100%
+      );
+    }
+
+    .invite-content {
+      position: relative;
+      z-index: 2;
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      color: white;
+      text-align: center;
+      padding: 20px;
+    }
+
+    .invite-top {
+      font-family: "Raleway", sans-serif;
+      font-weight: 400;
+      text-transform: uppercase;
+      font-size: 15px;
+      letter-spacing: 0.12em;
+      opacity: 0.65;
+      margin: 20px;
+    }
+
+    .invite-names {
+      font-family: "Great Vibes", cursive;
+      font-weight: 400;
+      font-size: 90px;
+      margin: 18px;
+      opacity: 0.95;
+    }
+
+    .invite-names2 {
+      font-family: "Great Vibes", cursive;
+      font-weight: 400;
+      font-size: 58px;
+      margin: 18px;
+      opacity: 0.95;
+    }
+
+    .invite-text {
+      font-family: "Raleway", sans-serif;
+      font-weight: 400;
+      text-transform: uppercase;
+      font-size: 15px;
+      line-height: 1.9;
+      letter-spacing: 0.08em;
+      opacity: 0.85;
+    }
+
+    .invite-heart {
+      margin-top: 40px;
+      font-size: 25px;
+      opacity: 0.4;
+      animation: floatHeart 3s infinite ease-in-out;
+    }
+
+    @keyframes floatHeart {
+      0%, 100% {
+        transform: translateY(0);
+        opacity: 0.3;
+      }
+
+      50% {
+        transform: translateY(10px);
+        opacity: 1;
+      }
+    }
+
+    .reveal {
+      opacity: 0;
+      transform: translateY(40px);
+      transition: all 1.2s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    .reveal.active {
+      opacity: 0.9;
+      transform: translateY(0);
+    }
+
+    .delay-1 {
+      transition-delay: 0.2s;
+    }
+
+    .delay-2 {
+      transition-delay: 0.4s;
+    }
+
+    .delay-3 {
+      transition-delay: 0.6s;
+    }
+
+    /* =========================
+       DATE
+    ========================= */
+
+    .luxury-date-section {
+      background: #f6f6f4;
+      min-height: 100vh;
+      min-height: 100dvh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 40px 20px;
+      font-family: "Inter", sans-serif;
+    }
+
+    .luxury-card {
+      max-width: 420px;
+      width: 100%;
+      margin: auto;
+      padding: 40px 24px;
+      border-radius: 24px;
+      background: #f6f6f4;
+      box-shadow: 0 20px 60px rgba(0, 0, 0, 0.08);
+    }
+
+    .date-header {
+      font-size: 12px;
+      letter-spacing: 0.3em;
+      text-transform: uppercase;
+      color: #6f6f6f;
+      text-align: center;
+      margin-bottom: 20px;
+    }
+
+    .date-placeholder {
+      text-align: center;
+      font-family: "Cormorant Garamond", serif;
+      font-size: 38px;
+      color: #1a1a1a;
+      line-height: 1.2;
+    }
+
+    .luxury-divider {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 12px;
+      margin: 20px 0 30px;
+    }
+
+    .luxury-divider span {
+      width: 60px;
+      height: 1px;
+      background: #c9a96e;
+    }
+
+    .luxury-divider i {
+      color: #c9a96e;
+      font-size: 14px;
+      font-style: normal;
+    }
+
+    .timer-label {
+      font-size: 12px;
+      letter-spacing: 0.25em;
+      text-align: center;
+      color: #6f6f6f;
+      margin-bottom: 15px;
+      text-transform: uppercase;
+    }
+
+    .countdown {
+      display: flex;
+      justify-content: center;
+      gap: 12px;
+      margin-bottom: 20px;
+      flex-wrap: wrap;
+    }
+
+    .countdown-item {
+      text-align: center;
+    }
+
+    .flip-number {
+      display: inline-block;
+      background: white;
+      padding: 10px 6px;
+      border-radius: 12px;
+      font-family: "Cormorant Garamond", serif;
+      font-size: 30px;
+      font-weight: 500;
+      min-width: 60px;
+      color: #1a1a1a;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+    }
+
+    .countdown small {
+      display: block;
+      font-size: 10px;
+      letter-spacing: 0.15em;
+      color: #6f6f6f;
+      margin-top: 8px;
+      text-transform: uppercase;
+    }
+
+    .ornament {
+      text-align: center;
+      color: #c9a96e;
+      margin: 25px 0;
+      font-size: 20px;
+    }
+
+    .event-info {
+      text-align: center;
+      color: #1a1a1a;
+    }
+
+    .event-info .event-time {
+      font-family: "Cormorant Garamond", serif;
+      font-size: 32px;
+      margin-bottom: 5px;
+    }
+
+    .event-info .event-place {
+      font-size: 13px;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: #6f6f6f;
+      line-height: 1.7;
+    }
+
+    /* =========================
+       PROGRAM
+    ========================= */
+
+    .timeline-section {
+      background: #f6f6f4;
+      padding: 100px 20px;
+      display: flex;
+      justify-content: center;
+    }
+
+    .timeline-container {
+      max-width: 420px;
+      width: 100%;
+      text-align: center;
+    }
+
+    .timeline-title {
+      font-family: "Inter", sans-serif;
+      font-size: 12px;
+      letter-spacing: 0.3em;
+      text-transform: uppercase;
+      color: #6f6f6f;
+      margin-bottom: 60px;
+    }
+
+    .timeline {
+      display: flex;
+      flex-direction: column;
+      gap: 40px;
+      position: relative;
+      margin-left: 20px;
+    }
+
+    .timeline-item {
+      display: flex;
+      align-items: center;
+    }
+
+    .timeline-icon {
+      width: 50px;
+      display: flex;
+      justify-content: flex-end;
+      margin-right: 10px;
+      font-size: 32px;
+      filter: grayscale(100%);
+      transition: 0.3s;
+    }
+
+    .timeline-item:hover .timeline-icon {
+      filter: none;
+      transform: scale(1.1);
+    }
+
+    .timeline-center {
+      width: 40px;
+      position: relative;
+      display: flex;
+      justify-content: center;
+    }
+
+    .dot {
+      width: 8px;
+      height: 8px;
+      background: #2b2b2b;
+      border-radius: 50%;
+      z-index: 2;
+    }
+
+    .line {
+      position: absolute;
+      top: 8px;
+      width: 1px;
+      height: calc(100% + 32px);
+      background: #2b2b2b;
+      opacity: 0.2;
+    }
+
+    .timeline-item.last .line {
+      display: none;
+    }
+
+    .timeline-text {
+      flex: 1;
+      text-align: left;
+      margin-left: 10px;
+    }
+
+    .time1 {
+      font-family: "Cormorant Garamond", serif;
+      font-size: 28px;
+      font-weight: 500;
+      color: #1a1a1a;
+    }
+
+    .desc {
+      font-family: "Inter", sans-serif;
+      font-size: 13px;
+      letter-spacing: 0.15em;
+      color: #6f6f6f;
+      margin-top: 4px;
+      text-transform: uppercase;
+    }
+
+    /* =========================
+       LOCATION
+    ========================= */
+
+    .location-section {
+      background: linear-gradient(
+        135deg,
+        #0a0a0a 0%,
+        #1a1a1a 100%
+      );
+      padding: 60px 20px;
+    }
+
+    .location-winner-section {
+      position: relative;
+      min-height: 100vh;
+      width: 100%;
+      max-width: 900px;
+      backdrop-filter: blur(12px);
+      border-radius: 48px;
+      overflow: hidden;
+      box-shadow:
+        0 30px 70px rgba(0, 0, 0, 0.6),
+        0 0 0 1px rgba(201, 169, 110, 0.2) inset;
+      background: linear-gradient(
+        135deg,
+        #0a0a0a 0%,
+        #1a1a1a 100%
+      );
+      margin: 0 auto;
+    }
+
+    .location-glass-container {
+      position: relative;
+      z-index: 2;
+      padding: 60px 40px;
+      width: 100%;
+      overflow-x: hidden;
+    }
+
+    .location-header {
+      text-align: center;
+      margin-bottom: 50px;
+    }
+
+    .location-badge {
+      display: inline-block;
+      font-family: "Raleway", sans-serif;
+      font-size: 11px;
+      letter-spacing: 5px;
+      text-transform: uppercase;
+      color: #c9a96e;
+      background: rgba(201, 169, 110, 0.12);
+      padding: 8px 24px;
+      border-radius: 60px;
+      margin-bottom: 20px;
+      border: 1px solid rgba(201, 169, 110, 0.25);
+    }
+
+    .location-title {
+      font-family: "Cormorant Garamond", serif;
+      font-size: 56px;
+      font-weight: 400;
+      color: #ffffff;
+      margin-bottom: 16px;
+    }
+
+    .location-subtitle {
+      font-family: "Inter", sans-serif;
+      font-size: 14px;
+      letter-spacing: 0.3em;
+      color: rgba(255, 255, 255, 0.55);
+      text-transform: uppercase;
+      line-height: 1.8;
+    }
+
+    .location-divider {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 15px;
+      margin-top: 25px;
+    }
+
+    .location-divider span {
+      width: 55px;
+      height: 1px;
+      background: linear-gradient(
+        90deg,
+        transparent,
+        #c9a96e,
+        #c9a96e,
+        transparent
+      );
+    }
+
+    .location-divider i {
+      color: #c9a96e;
+      font-style: normal;
+      font-size: 14px;
+    }
+
+    .venue-gallery {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 20px;
+      margin-bottom: 40px;
+    }
+
+    .venue-gallery-item {
+      position: relative;
+      overflow: hidden;
+      border-radius: 20px;
+      aspect-ratio: 4 / 3;
+    }
+
+    .venue-img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.7s;
+    }
+
+    .venue-gallery-item:hover .venue-img {
+      transform: scale(1.08);
+    }
+
+    .restaurant-name {
+      font-family: "Great Vibes", cursive;
+      font-size: 50px;
+      font-weight: 500;
+      text-align: center;
+      color: #ffffff;
+      background: linear-gradient(
+        135deg,
+        #ffffff 0%,
+        #e0c8a0 100%
+      );
+      background-clip: text;
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .district-name {
+      text-align: center;
+      margin-top: 7px;
+      color: rgba(255, 255, 255, 0.55);
+      font-size: 13px;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+    }
+
+    .address-block {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 14px;
+      margin: 25px 0;
+      padding: 18px 0;
+      border-top: 1px solid rgba(201, 169, 110, 0.2);
+      border-bottom: 1px solid rgba(201, 169, 110, 0.2);
+    }
+
+    .address-icon {
+      width: 36px;
+      height: 36px;
+      background: rgba(201, 169, 110, 0.12);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+    }
+
+    .address-icon svg {
+      width: 20px;
+      height: 20px;
+      stroke: #c9a96e;
+      fill: none;
+    }
+
+    .address-text {
+      font-family: "Inter", sans-serif;
+      font-size: 17px;
+      color: rgba(255, 255, 255, 0.85);
+      text-align: center;
+    }
+
+    .route-buttons {
+      display: flex;
+      justify-content: center;
+      margin-top: 25px;
+    }
+
+    .route-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 12px;
+      padding: 16px 30px;
+      border-radius: 60px;
+      font-family: "Raleway", sans-serif;
+      font-size: 13px;
+      font-weight: 600;
+      text-transform: uppercase;
+      text-decoration: none;
+      border: 1.2px solid rgba(201, 169, 110, 0.6);
+      color: #c9a96e;
+      transition: all 0.3s;
+    }
+
+    .route-btn:hover {
+      background: rgba(201, 169, 110, 0.12);
+      transform: translateY(-3px);
+    }
+
+    .route-btn svg {
+      width: 18px;
+      height: 18px;
+      stroke: #c9a96e;
+      fill: none;
+    }
+
+    .footer-heart {
+      text-align: center;
+      margin-top: 30px;
+      color: #c9a96e;
+    }
+
+    .animate-up {
+      opacity: 0;
+      transform: translateY(30px);
+      transition: all 0.8s ease;
+    }
+
+    .animate-up.active {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* =========================
+       FINAL SECTION
+    ========================= */
+
+    .final-section {
+      position: relative;
+      height: 100vh;
+      height: 100dvh;
+      overflow: hidden;
+      background: black;
+    }
+
+    .final-bg {
+      position: absolute;
+      inset: 0;
+      background: url("img1.jpg") center/cover no-repeat;
+      filter: grayscale(100%) brightness(0.55);
+    }
+
+    .final-overlay {
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(
+        circle,
+        rgba(0, 0, 0, 0.1),
+        rgba(0, 0, 0, 0.8)
+      );
+    }
+
+    .final-content {
+      position: relative;
+      z-index: 2;
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      color: white;
+      text-align: center;
+      padding: 20px;
+    }
+
+    .final-family {
+      font-family: "Raleway", sans-serif;
+      font-size: 13px;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      opacity: 0.7;
+      margin-bottom: 25px;
+    }
+
+    .final-names {
+      font-family: "Great Vibes", cursive;
+      font-size: 62px;
+      margin-bottom: 18px;
+    }
+
+    .final-text {
+      font-family: "Raleway", sans-serif;
+      font-size: 14px;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      opacity: 0.8;
+    }
+
+    .final-heart {
+      margin-top: 35px;
+      font-size: 30px;
+      color: #c9a96e;
+      animation: floatHeart 3s infinite ease-in-out;
+    }
+
+    /* =========================
+       MUSIC
+    ========================= */
+
+    #musicToggle {
+      position: fixed;
+      top: 20px;
+      right: 20px;
+      z-index: 1020;
+      background: rgba(0, 0, 0, 0.35);
+      backdrop-filter: blur(10px);
+      border: 1px solid rgba(255, 255, 255, 0.3);
+      color: white;
+      width: 42px;
+      height: 42px;
+      border-radius: 50%;
+      font-size: 13px;
+      cursor: pointer;
+    }
+
+    /* =========================
+       RESPONSIVE
+    ========================= */
+
+    @media (max-width: 768px) {
+      .lock-names {
+        font-size: 43px;
+      }
+
+      .lock-invited {
+        font-size: 10px;
+        letter-spacing: 0.25em;
+      }
+
+      h1 {
+        font-size: 40px;
+      }
+
+      .invite-names {
+        font-size: 70px;
+      }
+
+      .invite-names2 {
+        font-size: 48px;
+      }
+
+      .venue-gallery {
+        grid-template-columns: 1fr;
+      }
+
+      .location-winner-section {
+        border-radius: 28px;
+      }
+
+      .location-glass-container {
+        padding: 50px 22px;
+      }
+
+      .location-title {
+        font-size: 42px;
+      }
+
+      .restaurant-name {
+        font-size: 43px;
+      }
+
+      .address-text {
+        font-size: 15px;
+      }
+
+      .final-names {
+        font-size: 52px;
+      }
+    }
+
+    @media (max-width: 380px) {
+      .lock-names {
+        font-size: 38px;
+      }
+
+      .invite-names {
+        font-size: 62px;
+      }
+
+      .countdown {
+        gap: 7px;
+      }
+
+      .flip-number {
+        min-width: 53px;
+        font-size: 27px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- =========================
+       LOCK SCREEN
+  ========================= -->
+
+  <div class="lock-screen" id="lockScreen">
+
+    <div class="lock-bg"></div>
+    <div class="lock-blur"></div>
+
+    <div class="lock-content">
+
+      <div class="lock-invited">
+        SIZGA TAKLIFNOMA KELDI
+      </div>
+
+      <div class="lock-names">
+        Javohir & Farangiz
+      </div>
+
+      <div class="lock-family">
+        Xudayevlar va Norovlar oilasi
+      </div>
+
+      <div class="lock-date">
+        TO‘Y KECHASI
+      </div>
+
+      <div class="lock-time">
+        18:30
+      </div>
+
+      <div class="lock-arabic">
+        وَأَلَّفَ بَيْنَ قُلُوبِهِمْ
+      </div>
+
+      <div class="lock-translation">
+        "Va U ularning qalblarini birlashtirdi"
+      </div>
+
+      <div class="lock-source">
+        Al-Anfol, 63
+      </div>
+
+      <div class="lock-heart">
+        <svg
+          width="28"
+          height="28"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="#C9A96E"
+          stroke-width="1.5"
+        >
+          <path
+            d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5
+               2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09
+               C13.09 3.81 14.76 3 16.5 3
+               19.58 3 22 5.42 22 8.5
+               c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"
+          />
+        </svg>
+      </div>
+
+      <div class="slider-container">
+
+        <div class="slider-track" id="sliderTrack">
+
+          <div class="slider-text">
+            OCHISH
+          </div>
+
+          <div class="slider-arrow">
+            →
+          </div>
+
+          <div class="slider-thumb" id="sliderThumb">
+
+            <svg class="lock-icon-svg" viewBox="0 0 24 24">
+              <rect x="6" y="11" width="12" height="10" rx="2" />
+              <path d="M8 11V8c0-2.2 1.8-4 4-4s4 1.8 4 4v3" />
+              <circle cx="12" cy="16" r="1.2" />
+            </svg>
+
+          </div>
+
+        </div>
+
+      </div>
+
+    </div>
+  </div>
+
+
+  <!-- =========================
+       MUSIC
+  ========================= -->
+
+  <audio id="bgMusic" loop>
+    <source src="music.mp3" type="audio/mpeg" />
+  </audio>
+
+  <button id="musicToggle">
+    ▷
+  </button>
+
+
+  <!-- =========================
+       MAIN CONTENT
+  ========================= -->
+
+  <div class="main-content" id="mainContent">
+
+
+    <!-- HERO -->
+
+    <div class="invitation">
+
+      <div class="background"></div>
+      <div class="overlay"></div>
+
+      <div class="content">
+
+        <h1>
+          Javohir & Farangiz
+        </h1>
+
+        <div class="date">
+          NIKOH TO‘YI
+        </div>
+
+        <div class="venue-small">
+          18:30 • Xo‘jaqul ota to‘yxonasi
+        </div>
+
+        <div class="divider"></div>
+
+        <div class="arabic">
+          وَأَلَّفَ بَيْنَ قُلُوبِهِمْ
+        </div>
+
+        <div class="translation">
+          «Va U ularning qalblarini birlashtirdi»
+        </div>
+
+        <div class="source">
+          Al-Anfol, 63
+        </div>
+
+        <div class="scroll-down-container">
+
+          <svg class="heart-arrow-icon" viewBox="0 0 200 200">
+            <path
+              d="M165 45
+                 C165 10, 100 10, 100 60
+                 C100 10, 35 10, 35 45
+                 C35 90, 80 130, 100 150
+                 C120 135, 150 110, 155 90
+                 M155 90 L165 180
+                 M150 165 L165 180 L180 165"
+            />
+          </svg>
+
+        </div>
+
+      </div>
+    </div>
+
+
+    <!-- INVITATION -->
+
+    <section class="invite-section">
+
+      <div class="invite-bg"></div>
+      <div class="invite-overlay"></div>
+
+      <div class="invite-content">
+
+        <div class="invite-top reveal">
+          HURMATLI AZIZLARIMIZ!
+        </div>
+
+        <div class="invite-names reveal delay-1">
+          Javohir & Farangiz
+        </div>
+
+        <div class="invite-text reveal delay-2">
+
+          <span>
+            Sizlarni nikoh to‘yimizga
+          </span>
+
+          <br />
+
+          <span>
+            taklif etishdan juda xursandmiz
+          </span>
+
+        </div>
+
+        <div class="invite-heart reveal delay-3">
+          ♡
+        </div>
+
+      </div>
+
+    </section>
+
+
+    <!-- DATE / TIME -->
+
+    <div class="luxury-date-section">
+
+      <div class="luxury-card">
+
+        <div class="date-header">
+          TO‘Y VAQTI
+        </div>
+
+        <div class="date-placeholder">
+          18:30
+        </div>
+
+        <div class="luxury-divider">
+          <span></span>
+          <i>♡</i>
+          <span></span>
+        </div>
+
+        <div class="timer-label">
+          TO‘YGA QOLGAN VAQT
+        </div>
+
+        <div class="countdown" id="luxuryCountdown">
+
+          <div class="countdown-item">
+            <span class="flip-number" id="days">0</span>
+            <small>kun</small>
+          </div>
+
+          <div class="countdown-item">
+            <span class="flip-number" id="hours">0</span>
+            <small>soat</small>
+          </div>
+
+          <div class="countdown-item">
+            <span class="flip-number" id="minutes">0</span>
+            <small>daqiqa</small>
+          </div>
+
+          <div class="countdown-item">
+            <span class="flip-number" id="seconds">0</span>
+            <small>soniya</small>
+          </div>
+
+        </div>
+
+        <div class="ornament">
+          ✧
+        </div>
+
+        <div class="event-info">
+
+          <div class="event-time">
+            18:30
+          </div>
+
+          <div class="event-place">
+            Xo‘jaqul ota to‘yxonasi
+            <br />
+            Olot tumani
+          </div>
+
+        </div>
+
+      </div>
+
+    </div>
+
+
+    <!-- PROGRAM -->
+
+    <section class="timeline-section">
+
+      <div class="timeline-container">
+
+        <div class="timeline-title">
+          TO‘Y DASTURI
+        </div>
+
+        <div class="timeline">
+
+          <div class="timeline-item">
+
+            <div class="timeline-icon">
+              🥂
+            </div>
+
+            <div class="timeline-center">
+              <span class="dot"></span>
+              <span class="line"></span>
+            </div>
+
+            <div class="timeline-text">
+
+              <div class="time1">
+                18:30
+              </div>
+
+              <div class="desc">
+                MEHMONLAR YIG‘ILISHI
+              </div>
+
+            </div>
+
+          </div>
+
+
+          <div class="timeline-item">
+
+            <div class="timeline-icon">
+              💍
+            </div>
+
+            <div class="timeline-center">
+              <span class="dot"></span>
+              <span class="line"></span>
+            </div>
+
+            <div class="timeline-text">
+
+              <div class="time1">
+                19:00
+              </div>
+
+              <div class="desc">
+                NIKOH MAROSIMI
+              </div>
+
+            </div>
+
+          </div>
+
+
+          <div class="timeline-item">
+
+            <div class="timeline-icon">
+              🍽️
+            </div>
+
+            <div class="timeline-center">
+              <span class="dot"></span>
+              <span class="line"></span>
+            </div>
+
+            <div class="timeline-text">
+
+              <div class="time1">
+                20:00
+              </div>
+
+              <div class="desc">
+                BAYRAM DASTURXONI
+              </div>
+
+            </div>
+
+          </div>
+
+
+          <div class="timeline-item last">
+
+            <div class="timeline-icon">
+              ✨
+            </div>
+
+            <div class="timeline-center">
+              <span class="dot"></span>
+            </div>
+
+            <div class="timeline-text">
+
+              <div class="time1">
+                23:00
+              </div>
+
+              <div class="desc">
+                YAKUNI
+              </div>
+
+            </div>
+
+          </div>
+
+        </div>
+
+      </div>
+
+    </section>
+
+
+    <!-- LOCATION -->
+
+    <section class="location-section">
+
+      <div class="location-winner-section">
+
+        <div class="location-glass-container">
+
+          <div class="location-header animate-up">
+
+            <div class="location-badge">
+              ✦ MANZIL ✦
+            </div>
+
+            <h1 class="location-title">
+              To‘y o‘tkaziladigan joy
+            </h1>
+
+            <div class="location-subtitle">
+              Olot tumani
+            </div>
+
+            <div class="location-divider">
+              <span></span>
+              <i>⚘</i>
+              <span></span>
+            </div>
+
+          </div>
+
+
+          <div class="venue-gallery animate-up">
+
+            <div class="venue-gallery-item">
+              <img
+                src="img3.jpg"
+                alt="Xo‘jaqul ota to‘yxonasi"
+                class="venue-img"
+              />
+            </div>
+
+            <div class="venue-gallery-item">
+              <img
+                src="img4.jpg"
+                alt="Xo‘jaqul ota to‘yxonasi ichi"
+                class="venue-img"
+              />
+            </div>
+
+          </div>
+
+
+          <div class="restaurant-name animate-up">
+            «Xo‘jaqul ota»
+          </div>
+
+          <div class="district-name">
+            to‘yxonasi • Olot tumani
+          </div>
+
+
+          <div class="address-block animate-up">
+
+            <div class="address-icon">
+
+              <svg viewBox="0 0 24 24">
+
+                <path
+                  d="M12 2C8.13 2 5 5.13 5 9
+                     c0 5.25 7 13 7 13
+                     s7-7.75 7-13
+                     c0-3.87-3.13-7-7-7z"
+                />
+
+                <circle
+                  cx="12"
+                  cy="9"
+                  r="2.5"
+                />
+
+              </svg>
+
+            </div>
+
+            <div class="address-text">
+              Xo‘jaqul ota to‘yxonasi
+              <br />
+              Olot tumani
+            </div>
+
+          </div>
+
+
+          <div class="route-buttons animate-up">
+
+            <a
+              href="https://www.google.com/maps/search/?api=1&query=Xo%27jaqul+ota+to%27yxonasi+Olot"
+              target="_blank"
+              class="route-btn"
+            >
+
+              <svg viewBox="0 0 24 24">
+
+                <path
+                  d="M12 2v4M22 10h-4M2 10h4M12 18v4"
+                />
+
+                <circle
+                  cx="12"
+                  cy="9"
+                  r="2.5"
+                />
+
+                <path
+                  d="M12 2C8.13 2 5 5.13 5 9
+                     c0 5.25 7 13 7 13
+                     s7-7.75 7-13
+                     c0-3.87-3.13-7-7-7z"
+                />
+
+              </svg>
+
+              Xaritada ochish
+
+            </a>
+
+          </div>
+
+
+          <div class="footer-heart">
+            ♡ Xush kelibsiz ♡
+          </div>
+
+        </div>
+
+      </div>
+
+    </section>
+
+
+    <!-- FINAL -->
+
+    <section class="final-section">
+
+      <div class="final-bg"></div>
+      <div class="final-overlay"></div>
+
+      <div class="final-content">
+
+        <div class="final-family">
+          Xudayevlar va Norovlar oilasi
+        </div>
+
+        <div class="final-names">
+          Javohir & Farangiz
+        </div>
+
+        <div class="final-text">
+          Sizni to‘yimizda kutib qolamiz
+        </div>
+
+        <div class="final-heart">
+          ♡
+        </div>
+
+      </div>
+
+    </section>
+
+  </div>
+
+
+  <script>
+
+    /* =========================
+       LOCK SCREEN & SLIDER
+    ========================= */
+
+    const lockScreen =
+      document.getElementById("lockScreen");
+
+    const mainContent =
+      document.getElementById("mainContent");
+
+    const sliderThumb =
+      document.getElementById("sliderThumb");
+    const sliderTrack =
+      document.getElementById("sliderTrack");
+
+    let isDragging = false;
+    let isUnlocked = false;
+
+
+    function getMaxLeft() {
+
+      return (
+        sliderTrack.getBoundingClientRect().width -
+        sliderThumb.getBoundingClientRect().width -
+        4
+      );
+
+    }
+
+
+    function unlockScreen() {
+
+      if (isUnlocked) return;
+
+      isUnlocked = true;
+
+      if (navigator.vibrate) {
+        navigator.vibrate(50);
+      }
+
+      lockScreen.style.opacity = "0";
+
+      setTimeout(() => {
+
+        lockScreen.style.visibility = "hidden";
+
+        mainContent.classList.add("visible");
+
+        const music =
+          document.getElementById("bgMusic");
+
+        if (music.paused) {
+          music.play().catch(() => {});
+        }
+
+        document.getElementById(
+          "musicToggle"
+        ).textContent = "▷";
+
+      }, 1000);
+
+    }
+
+
+    function onPointerMove(e) {
+
+      if (!isDragging || isUnlocked) return;
+
+      e.preventDefault();
+
+      const clientX =
+        e.clientX ??
+        e.touches?.[0]?.clientX;
+
+      if (clientX) {
+
+        const trackRect =
+          sliderTrack.getBoundingClientRect();
+
+        let newLeft =
+          clientX -
+          trackRect.left -
+          sliderThumb.offsetWidth / 2;
+
+        newLeft = Math.max(
+          4,
+          Math.min(
+            newLeft,
+            getMaxLeft()
+          )
+        );
+
+        sliderThumb.style.left =
+          newLeft + "px";
+
+      }
+
+    }
+
+
+    function onPointerUp() {
+
+      if (!isDragging) return;
+
+      isDragging = false;
+
+      if (
+        parseInt(sliderThumb.style.left) >=
+        getMaxLeft() - 10
+      ) {
+
+        unlockScreen();
+
+      } else {
+
+        sliderThumb.style.transition =
+          "left 0.3s";
+
+        sliderThumb.style.left =
+          "4px";
+
+        setTimeout(() => {
+
+          sliderThumb.style.transition = "";
+
+        }, 300);
+
+      }
+
+    }
+
+
+    sliderThumb.addEventListener(
+      "pointerdown",
+      () => {
+        isDragging = true;
+      }
+    );
+
+
+    sliderThumb.addEventListener(
+      "touchstart",
+      (e) => {
+
+        isDragging = true;
+
+        e.preventDefault();
+
+      },
+      { passive: false }
+    );
+
+
+    document.addEventListener(
+      "pointermove",
+      onPointerMove
+    );
+
+    document.addEventListener(
+      "touchmove",
+      onPointerMove,
+      { passive: false }
+    );
+
+    document.addEventListener(
+      "pointerup",
+      onPointerUp
+    );
+
+    document.addEventListener(
+      "touchend",
+      onPointerUp
+    );
+
+
+    /* =========================
+       AUDIO
+    ========================= */
+
+    const btn =
+      document.getElementById("musicToggle");
+
+    const music =
+      document.getElementById("bgMusic");
+
+
+    btn.addEventListener("click", () => {
+
+      if (music.paused) {
+
+        music.play();
+
+        btn.textContent = "▷";
+
+      } else {
+
+        music.pause();
+
+        btn.textContent = "❚❚";
+
+      }
+
+    });
+
+
+    /* =========================
+       COUNTDOWN
+    ========================= */
+
+    const weddingDate = new Date("2026-10-15T18:30:00").getTime();
+
+    function updateCountdown() {
+      const now = new Date().getTime();
+      const distance = weddingDate - now;
+
+      if (distance <= 0) {
+        document.getElementById("days").textContent = "0";
+        document.getElementById("hours").textContent = "0";
+        document.getElementById("minutes").textContent = "0";
+        document.getElementById("seconds").textContent = "0";
+        return;
+      }
+
+      const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+      const hours = Math.floor((distance / (1000 * 60 * 60)) % 24);
+      const minutes = Math.floor((distance / (1000 * 60)) % 60);
+      const seconds = Math.floor((distance / 1000) % 60);
+
+      document.getElementById("days").textContent = days;
+      document.getElementById("hours").textContent = hours;
+      document.getElementById("minutes").textContent = minutes;
+      document.getElementById("seconds").textContent = seconds;
+    }
+
+    updateCountdown();
+    setInterval(updateCountdown, 1000);
+
+
+    /* =========================
+       SCROLL REVEAL
+    ========================= */
+
+    const observer =
+      new IntersectionObserver(
+        (entries) => {
+
+          entries.forEach((entry) => {
+
+            if (entry.isIntersecting) {
+
+              entry.target
+                .querySelectorAll(
+                  ".reveal, .animate-up"
+                )
+                .forEach((el) => {
+
+                  el.classList.add("active");
+
+                });
+
+
+              const bg =
+                entry.target.querySelector(
+                  ".invite-bg"
+                );
+
+              if (bg) {
+                bg.style.transform =
+                  "scale(1)";
+              }
+
+            }
+
+          });
+
+        },
+        {
+          threshold: 0.3
+        }
+      );
+
+
+    document
+      .querySelectorAll(
+        ".invite-section, .location-winner-section"
+      )
+      .forEach((section) => {
+
+        observer.observe(section);
+
+      });
+
+  </script>
+
+</body>
+</html>

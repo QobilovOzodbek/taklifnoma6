@@ -893,12 +893,12 @@
       font-size: 14px;
     }
 
-    .venue-gallery {
-      display: grid;
-      grid-template-columns: repeat(2, 1fr);
-      gap: 20px;
-      margin-bottom: 40px;
-    }
+   .venue-gallery {
+  display: grid;
+  grid-template-columns: 1fr;
+  max-width: 600px;
+  margin: 0 auto 40px;
+}
 
     .venue-gallery-item {
       position: relative;
@@ -1228,7 +1228,7 @@
       </div>
 
       <div class="lock-time">
-        18:00
+        18:30
       </div>
 
       <div class="lock-arabic">
@@ -1330,7 +1330,7 @@
         </div>
 
         <div class="venue-small">
-          18:00 • Xo‘jaqul ota to‘yxonasi
+          18:30 • Xo‘jaqul ota to‘yxonasi
         </div>
 
         <div class="divider"></div>
@@ -1418,7 +1418,7 @@
         </div>
 
         <div class="date-placeholder">
-          18:00
+          18:30
         </div>
 
         <div class="luxury-divider">
@@ -1462,7 +1462,7 @@
         <div class="event-info">
 
           <div class="event-time">
-            18:00
+            18:30
           </div>
 
           <div class="event-place">
@@ -1504,7 +1504,7 @@
             <div class="timeline-text">
 
               <div class="time1">
-                18:00
+                18:30
               </div>
 
               <div class="desc">
@@ -1630,25 +1630,13 @@
           </div>
 
 
-          <div class="venue-gallery animate-up">
+         <div class="venue-gallery animate-up active">
 
-            <div class="venue-gallery-item">
-              <img
-                src="img3.jpg"
-                alt="Xo‘jaqul ota to‘yxonasi"
-                class="venue-img"
-              />
-            </div>
+  <div class="venue-gallery-item">
+    <img src="img3.jpg" alt="Xo‘jaqul ota to‘yxonasi" class="venue-img">
+  </div>
 
-            <div class="venue-gallery-item">
-              <img
-                src="img4.jpg"
-                alt="Xo‘jaqul ota to‘yxonasi ichi"
-                class="venue-img"
-              />
-            </div>
-
-          </div>
+</div>
 
 
           <div class="restaurant-name animate-up">
@@ -1982,7 +1970,7 @@
        COUNTDOWN
     ========================= */
 
-    const weddingDate = new Date("2026-10-15T18:00:00").getTime();
+    const weddingDate = new Date("2026-10-15T18:30:00").getTime();
 
     function updateCountdown() {
       const now = new Date().getTime();
